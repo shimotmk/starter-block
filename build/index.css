@@ -1,1 +1,69 @@
-.wp-block-create-block-starter-block{border:1px dotted red}
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-starter-block {
+  border: 1px dotted #f00;
+}
+
+/*mblog*/
+.mblog-h2-title {
+  background: #f7f7f7 !important;
+  padding: 20px 15px 18px !important;
+  color: #333 !important;
+  border-left: 9px solid #4865b2 !important;
+  line-height: 40px !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+}
+
+.mblog-h3-title {
+  letter-spacing: 1.6px;
+  padding: 0px 15px 0px;
+  border-left: 9px solid #4865b2;
+  color: #333;
+  font-weight: 600;
+  margin-top: 60px;
+  font-size: 20px;
+}
+
+.mblog-h4-title {
+  font-weight: 600;
+  color: #4663B4;
+  letter-spacing: 2.25px;
+  padding: 0px 15px 0px;
+  border-left: 9px solid #4865b2;
+  line-height: 30px;
+}
+
+.mblog-pre-text {
+  font-size: 17px;
+  background-color: #fafafa;
+  padding: 40px 25px;
+  color: #5a5a5a;
+  font-weight: 500;
+  line-height: 1.5;
+  outline: 1px solid #f0f0f0;
+  border-color: #f0f0f0;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 40px;
+}
+
+.mblog_list {
+  background-color: #f8f9ff !important;
+  border: dashed 1px #4865b2 !important;
+  padding-top: 40px !important;
+  padding-bottom: 36px !important;
+  padding-right: 10px !important;
+  padding-left: 40px !important;
+  margin-left: 0 !important;
+}
+.mblog_list li {
+  margin-bottom: 10px !important;
+  text-align: left !important;
+}
+
+/*# sourceMappingURL=index.css.map*/

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Starter Block
  * Description:     Example block written with ESNext standard and JSX support – build step required.
- * Version:         0.1.0
+ * Version:         2.1.0
  * Author:          The WordPress Contributors
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -10,6 +10,19 @@
  *
  * @package         create-block
  */
+
+
+ require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
+	add_action( 'init', 'activate_autoupdate' );
+
+	function activate_autoupdate() {
+			$plugin_slug = plugin_basename( __FILE__ ); // e.g. `hello/hello.php`.
+			$gh_user = 'shimotmk';                      // The user name of GitHub.
+			$gh_repo = 'starter-block';       // The repository name of your plugin.
+
+			// Activate automatic update.
+			new Miya\WP\GH_Auto_Updater( $plugin_slug, $gh_user, $gh_repo );
+	}
 
 /**
  * Registers all block assets so that they can be enqueued through the block editor
@@ -59,3 +72,23 @@ function create_block_starter_block_block_init() {
 	) );
 }
 add_action( 'init', 'create_block_starter_block_block_init' );
+
+/*
+ブロックカテゴリー
+*/
+function manablog_blocks_plugin_categories( $categories, $post ) {
+    if ( $post->post_type !== 'post' ) {
+        return $categories;
+    }
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug' => 'mblog-blocks',
+                'title' => __( 'Manablog Blocks', 'my-plugin' ),
+                'icon'  => 'wordpress',
+            ),
+        )
+    );
+}
+add_filter( 'block_categories', 'manablog_blocks_plugin_categories', 10, 2 );
