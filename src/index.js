@@ -91,3 +91,320 @@ registerBlockType( 'create-block/starter-block', {
 	 */
 	save,
 } );
+
+
+/*
+manablog h2タイトル
+*/
+(function () {
+	const { createElement: el } =  wp.element;
+	const { registerBlockType } =  wp.blocks;
+	const { RichText } =  wp.blockEditor; // https://developer.wordpress.org/block-editor/developers/richtext/
+
+	registerBlockType('my-block/mblog-h2-title', {
+		title: 'manablog h2タイトル',
+		icon: 'heading',
+		category: 'mblog-blocks',
+		keywords: ['mh2'],
+		supports: {
+			className: false,
+		},
+		attributes: {
+			content: {
+				type: 'string',
+				source: 'html',
+				selector: '.mblog-h2-title', // セレクタはsave側に合わせることに注意。
+			},
+		},
+		edit: (props) => {
+			const { className, attributes, setAttributes } = props;
+			const { content } = attributes;
+			return el(
+				RichText, // テキストが自由に編集できるコンポーネント。
+				{
+					tagName: 'h2', // RichText を何タグで実装するか
+					className: `mblog-h2-title ${className}`,
+					value: content,
+					onChange: function (newContent) {
+						setAttributes({ content: newContent });
+					},
+				}
+			);
+		},
+		save: (props) => {
+			const { attributes } = props;
+			const { content } = attributes;
+
+			return el(
+				RichText.Content, // 受け取り側は RichText.Content
+				{ 
+					tagName: 'h2',
+					className: 'mblog-h2-title',
+					value: content,
+				}
+			);
+		},
+	});
+})();
+
+/*
+manablog h3タイトル
+*/
+(function () {
+	const { createElement: el } =  wp.element;
+	const { registerBlockType } =  wp.blocks;
+	const { RichText } =  wp.blockEditor;
+
+	registerBlockType('my-block/mblog-h3-title', {
+		title: 'manablog h3タイトル',
+		icon: 'heading',
+		category: 'mblog-blocks',
+		keywords: ['mh3'],
+		supports: {
+			className: false,
+		},
+		attributes: {
+			content: {
+				type: 'string',
+				source: 'html',
+				selector: '.mblog-h3-title', // セレクタはsave側に合わせることに注意。
+			},
+		},
+		edit: (props) => {
+			const { className, attributes, setAttributes } = props;
+			const { content } = attributes;
+			return el(
+				RichText, // テキストが自由に編集できるコンポーネント。
+				{
+					tagName: 'h3', // RichText を何タグで実装するか
+					className: `mblog-h3-title ${className}`,
+					value: content,
+					onChange: function (newContent) {
+						setAttributes({ content: newContent });
+					},
+				}
+			);
+		},
+		save: (props) => {
+			const { attributes } = props;
+			const { content } = attributes;
+
+			return el(
+				RichText.Content, // 受け取り側は RichText.Content
+				{ 
+					tagName: 'h3',
+					className: 'mblog-h3-title',
+					value: content,
+				}
+			);
+		},
+	});
+})();
+
+/*
+manablog h4タイトル
+*/
+(function () {
+	const { createElement: el } =  wp.element;
+	const { registerBlockType } =  wp.blocks;
+	const { RichText } =  wp.blockEditor;
+
+	registerBlockType('my-block/mblog-h4-title', {
+		title: 'manablog h4タイトル',
+		icon: 'heading',
+		category: 'mblog-blocks',
+		keywords: ['mh4'],
+		supports: {
+			className: false,
+		},
+		attributes: {
+			content: {
+				type: 'string',
+				source: 'html',
+				selector: '.mblog-h4-title', // セレクタはsave側に合わせることに注意。
+			},
+		},
+		edit: (props) => {
+			const { className, attributes, setAttributes } = props;
+			const { content } = attributes;
+			return el(
+				RichText, // テキストが自由に編集できるコンポーネント。
+				{
+					tagName: 'h4', // RichText を何タグで実装するか
+					className: `mblog-h4-title ${className}`,
+					value: content,
+					onChange: function (newContent) {
+						setAttributes({ content: newContent });
+					},
+				}
+			);
+		},
+		save: (props) => {
+			const { attributes } = props;
+			const { content } = attributes;
+
+			return el(
+				RichText.Content, // 受け取り側は RichText.Content
+				{ 
+					tagName: 'h4',
+					className: 'mblog-h4-title',
+					value: content,
+				}
+			);
+		},
+	});
+})();
+
+/*
+manablog preダグ
+*/
+(function () {
+	const { createElement: el } =  wp.element;
+	const { registerBlockType } =  wp.blocks;
+	const { RichText } =  wp.blockEditor; 
+
+	registerBlockType('my-block/mblog-pre-text', {
+		title: 'manablog preダグ',
+		icon: 'tablet',
+		category: 'mblog-blocks',
+		keywords: ['mpre'],
+		supports: {
+			className: false,
+		},
+		attributes: {
+			content: {
+				type: 'string',
+				source: 'html',
+				selector: '.mblog-pre-text', // セレクタはsave側に合わせることに注意。
+			},
+		},
+		edit: (props) => {
+			const { className, attributes, setAttributes } = props;
+			const { content } = attributes;
+			return el(
+				RichText, // テキストが自由に編集できるコンポーネント。
+				{
+					tagName: 'div', // RichText を何タグで実装するか
+					className: `mblog-pre-text ${className}`,
+					value: content,
+					onChange: function (newContent) {
+						setAttributes({ content: newContent });
+					},
+				}
+			);
+		},
+		save: (props) => {
+			const { attributes } = props;
+			const { content } = attributes;
+
+			return el(
+				RichText.Content, // 受け取り側は RichText.Content
+				{ 
+					tagName: 'div',
+					className: 'mblog-pre-text',
+					value: content,
+				}
+			);
+		},
+	});
+})();
+
+/*
+リストスタイル
+*/
+(function () {
+		const { createElement: el } =  wp.element;
+		const { registerBlockType } =  wp.blocks;
+		const { RichText } =  wp.blockEditor; 
+
+    registerBlockType('my-block/sample-block03', {
+        title: 'manablog リスト',
+        icon: 'editor-ul',
+        category: 'mblog-blocks',
+				keywords: ['mli'],
+        attributes: {
+            content: {
+                type: 'array',
+                source: 'children',
+                selector: '.mblog_list',
+            },
+        },
+
+        edit: function (props) {
+            var content = props.attributes.content;
+            return el(
+                RichText,
+                {
+                    tagName: 'ul',
+                    multiline: 'li',
+                    className: 'mblog_list',
+                    value: content,
+                    onChange: function (newContent) {
+                        props.setAttributes({ content: newContent });
+                    }
+                }
+            );
+        },
+
+        save: function (props) {
+            return el(RichText.Content, {
+                tagName: 'ul',
+                className: 'mblog_list',
+                value: props.attributes.content,
+            });
+        },
+    });
+})();
+
+/*
+manablog pダグ point チェックマーク付き
+*/
+// (function () {
+// 	const { createElement: el } =  wp.element;
+// 	const { registerBlockType } =  wp.blocks;
+// 	const { RichText } =  wp.blockEditor; 
+
+// 	registerBlockType('my-block/mblog-point-text', {
+// 		title: 'manablog point ポイント',
+// 		icon: 'wordpress-alt',
+// 		category: 'mblog-blocks',
+// 		supports: {
+// 			className: false,
+// 		},
+// 		attributes: {
+// 			content: {
+// 				type: 'string',
+// 				source: 'html',
+// 				selector: '.mblog-point-text', // セレクタはsave側に合わせることに注意。
+// 			},
+// 		},
+// 		edit: (props) => {
+// 			const { className, attributes, setAttributes } = props;
+// 			const { content } = attributes;
+// 			return el(
+// 				RichText, // テキストが自由に編集できるコンポーネント。
+// 				{
+// 					tagName: 'p', // RichText を何タグで実装するか
+// 					className: `mblog-point-text ${className}`,
+// 					value: content,
+// 					onChange: function (newContent) {
+// 						setAttributes({ content: newContent });
+// 					},
+// 				}
+// 			);
+// 		},
+// 		save: (props) => {
+// 			const { attributes } = props;
+// 			const { content } = attributes;
+
+// 			return el(
+// 				RichText.Content, // 受け取り側は RichText.Content
+// 				{ 
+// 					tagName: 'p',
+// 					className: 'mblog-point-text',
+// 					value: content,
+// 				}
+// 			);
+// 		},
+// 	});
+// })();

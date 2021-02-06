@@ -11,6 +11,7 @@
  * @package         create-block
  */
 
+
 /**
  * Registers all block assets so that they can be enqueued through the block editor
  * in the corresponding context.
@@ -59,3 +60,23 @@ function create_block_starter_block_block_init() {
 	) );
 }
 add_action( 'init', 'create_block_starter_block_block_init' );
+
+/*
+ブロックカテゴリー
+*/
+function manablog_blocks_plugin_categories( $categories, $post ) {
+    if ( $post->post_type !== 'post' ) {
+        return $categories;
+    }
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug' => 'mblog-blocks',
+                'title' => __( 'Manablog Blocks', 'my-plugin' ),
+                'icon'  => 'wordpress',
+            ),
+        )
+    );
+}
+add_filter( 'block_categories', 'manablog_blocks_plugin_categories', 10, 2 );
